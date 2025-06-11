@@ -3,37 +3,56 @@
 <html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>OhMyFood</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="../assets/reset.css">
+    <link rel="stylesheet" href="../assets/restaurants.css">
 </head>
 <body>
     <header class="headband">
-        <div class="headband__return"><i class="fa-solid fa-arrow-left"></i></div>
-        <div class="headband__logo">
-            <img alt="logo_ohmyfood" src="">
+        <div class="headband__top">
+            <i class="headband__top__return headband__top__return--inactive fa-solid fa-arrow-left"></i>
+            <img class="headband__top__logo" alt="logo_ohmyfood" src="../assets/images/logo/ohmyfood@2x.svg">
         </div>
+
         <div class="headband__search-location">
-            <input type="text" id="search-location" placeholder="Lieux">
+            <i class="headband__search-location__location-icon fa-solid fa-location-dot"></i>
+            <input class="headband__search-location__text" type="text" id="search-location" placeholder="Lieux">
         </div>
     </header>
+    <img class="restaurant-img" alt="image du restaurant a la française" src="../assets/images/restaurants/toa-heftiba-DQKerTsQwi0-unsplash.jpg">
     <section class="restaurant-menu">
-        <img class="" alt="" src="">
-        <div><h1>La palette du goût</h1><i class="fa-regular fa-heart"></i></div>
+        <div class="restaurant-menu__title"><h1>À la Française</h1><i class="fa-regular fa-heart restaurant-menu__title__fav"></i></div>
         <!--Entrées-->
         <div class="restaurant-menu__block">
-            <h2 class="restaurant-menu__block__title">ENTRÉES</h2>
+            <div class="restaurant-menu__block__title">
+                <h2 class="restaurant-menu__block__title__text">ENTRÉES</h2>
+                <hr class="restaurant-menu__block__title__line" />
+            </div>
+
             <div class="restaurant-menu__block__content">
                 <h3>Tartare de poulpe acidulé</h3>
-                <p>Aux zestes d'orange</p>
+                <p class="restaurant-menu__block__content__text">Aux zestes d'orange</p>
                 <p>25€</p>
             </div>
             <div class="restaurant-menu__block__content">
                 <h3>Velouté de légumes d'antan</h3>
-                <p>Carotte, panais, topinambour</p>
+                <p class="restaurant-menu__block__content__text">Carotte, panais, topinambour</p>
                 <p>35€</p>
             </div>
             <div class="restaurant-menu__block__content">
                 <h3>Soupe à l'oignon</h3>
-                <p>Revisitée</p>
+                <p class="restaurant-menu__block__content__text">Revisitée</p>
                 <p>20€</p>
             </div>
         </div>
@@ -42,17 +61,17 @@
             <h2 class="restaurant-menu__block__title">PLATS</h2>
             <div class="restaurant-menu__block__content">
                 <h3>Coquilles Saint-Jacques</h3>
-                <p>Accompagnées d'une purée de panais</p>
+                <p class="restaurant-menu__block__content__text">Accompagnées d'une purée de panais</p>
                 <p>40€</p>
             </div>
             <div class="restaurant-menu__block__content">
                 <h3>Magret de canard</h3>
-                <p>Et parmentier de pommes de terre</p>
+                <p class="restaurant-menu__block__content__text">Et parmentier de pommes de terre</p>
                 <p>35€</p>
             </div>
             <div class="restaurant-menu__block__content">
                 <h3>Pigeonneau d’Ille-et-Vilaine</h3>
-                <p>Sur son lit de gnocchis aux légumes</p>
+                <p class="restaurant-menu__block__content__text">Sur son lit de gnocchis aux légumes</p>
                 <p>44€</p>
             </div>
         </div>
@@ -61,23 +80,23 @@
             <h2 class="restaurant-menu__block__title">DESSERTS</h2>
             <div class="restaurant-menu__block__content">
                 <h3>Pétales de violettes glacés</h3>
-                <p>Et purée de noisettes</p>
+                <p class="restaurant-menu__block__content__text">Et purée de noisettes</p>
                 <p>18€</p>
             </div>
             <div class="restaurant-menu__block__content">
                 <h3>Fondant au chocolat</h3>
-                <p>Revisité</p>
+                <p class="restaurant-menu__block__content__text">Revisité</p>
                 <p>22€</p>
             </div>
             <div class="restaurant-menu__block__content">
                 <h3>Millefeuille croustillant</h3>
-                <p>Myrtilles et pâte d’amande</p>
+                <p class="restaurant-menu__block__content__text">Myrtilles et pâte d’amande</p>
                 <p>23€</p>
             </div>
         </div>
     </section>
     <footer class="contact">
-        <img class="contact__logo" alt="contact_logo_ohmyfood" src="image/logo/ohmyfood@2x.svg">
+        <img class="contact__logo" alt="contact_logo_ohmyfood" src="../assets/images/logo/ohmyfood@2x.svg">
         <div class="contact__links">
             <a class="contact__links__link">Proposer un restaurant</a>
             <a class="contact__links__link">Devenir partenaire</a>
