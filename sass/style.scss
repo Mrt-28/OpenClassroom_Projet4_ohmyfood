@@ -38,7 +38,7 @@ $invisible: #ffffff00;
 .title {
     font-weight: 700;
     font-size: 24px;
-    padding: 0 20px 20px;
+    padding: 0 0 20px 0;
 }
 
 .headband {
@@ -75,6 +75,7 @@ $invisible: #ffffff00;
             font-size: 16px;
             font-weight: 500;
             background-color: $invisible;
+            outline: none;
         }
     }
 }
@@ -85,7 +86,7 @@ $invisible: #ffffff00;
     padding: 50px 0;
 
     &__title {
-        padding: 0 55px;
+        padding: 0;
         text-align: center;
     }
 
@@ -182,12 +183,14 @@ $invisible: #ffffff00;
 
     &__list {
         @include flexgrp(17px, column, uset, unset, unset);
+        width: 100%;
 
         &__elem {
-            margin: 0 20px;
+            /*margin: auto;*/
             background-color: $bckg_0;
             box-shadow: 0px 4px 15px 0px #00000026;
             border-radius: 20px;
+            /*width: 90%;*/
 
             &__text {
                 display: flex;
@@ -211,34 +214,56 @@ $invisible: #ffffff00;
     }
 }
 
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 4%;
+        width: 100%;
+        margin: auto;
+        box-sizing: border-box;
+    }
+}
+
 .restaurants {
     padding: 50px 0;
+    width: 100%;
 
     &__title {
     }
 
     &__cards {
         @include flexgrp(18px,column);
+        width: 100%;
 
         &__card {
             position: relative;
             background-color: $bckg_1;
             border-radius: 15px;
-            width: 346px;
+            width: 100%;
             cursor: pointer;
 
             &__img {
-                width: 346px;
-                height: 231px;
+                width: 100%;
+                height: auto;
                 border-radius: 15px 15px 0 0;
+                aspect-ratio: 16/9;
+                object-fit: cover;
+                max-height: 250px;
             }
 
             &__isnew {
                 position: absolute;
                 width: 80px;
                 height: 29px;
-                top: 13px;
-                left: 248px;
+                top: 16px;
+                right: 16px;
                 text-align: center;
                 align-content: center;
                 background-color: $light_green;
@@ -266,20 +291,118 @@ $invisible: #ffffff00;
                     height: 24px;
                 }
 
-                &__fav {
-                    grid-row: 1/3;
-                    grid-column: 2;
-                    font-size: 22px;
-                    text-align: right;
-                    padding-top: 4px;
+                &__event-checkbox {
+                    position: absolute;
+                    height: 0;
+                    width: 0;
+                    visibility: hidden;
+                }
 
-                    &--liked {
+                &__event-checkbox + &__fav {
+                    animation: 300ms ease-out 0s 1 both checked-fav;
+                    -webkit-animation: 300ms ease-out 0s 1 both checked-fav;
+                }
+
+                &__event-checkbox:checked + &__fav {
+                    animation: 300ms ease-out 0s 1 both unchecked-fav;
+                    -webkit-animation: 300ms ease-out 0s 1 both unchecked-fav;
+                }
+
+                @-webkit-keyframes checked-fav {
+                    0% {
+                        font-weight: 700;
                         background: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
                         -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
                         -moz-background-clip: text;
                         -moz-text-fill-color: transparent;
                     }
+
+                    100% {
+                        font-weight: 300;
+                        background: unset;
+                        -webkit-background-clip: unset;
+                        -webkit-text-fill-color: unset;
+                        -moz-background-clip: unset;
+                        -moz-text-fill-color: unset;
+                    }
+                }
+
+                @-webkit-keyframes unchecked-fav {
+                    0% {
+                        font-weight: 300;
+                        background: unset;
+                        -webkit-background-clip: unset;
+                        -webkit-text-fill-color: unset;
+                        -moz-background-clip: unset;
+                        -moz-text-fill-color: unset;
+                    }
+
+                    100% {
+                        font-weight: 700;
+                        background: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        -moz-background-clip: text;
+                        -moz-text-fill-color: transparent;
+                    }
+                }
+
+                @keyframes checked-fav {
+                    0% {
+                        font-weight: 700;
+                        background: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        -moz-background-clip: text;
+                        -moz-text-fill-color: transparent;
+                    }
+
+                    100% {
+                        font-weight: 300;
+                        background: unset;
+                        -webkit-background-clip: unset;
+                        -webkit-text-fill-color: unset;
+                        -moz-background-clip: unset;
+                        -moz-text-fill-color: unset;
+                    }
+                }
+
+                @keyframes unchecked-fav {
+                    0% {
+                        font-weight: 300;
+                        background: unset;
+                        -webkit-background-clip: unset;
+                        -webkit-text-fill-color: unset;
+                        -moz-background-clip: unset;
+                        -moz-text-fill-color: unset;
+                    }
+
+                    100% {
+                        font-weight: 700;
+                        background: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        -moz-background-clip: text;
+                        -moz-text-fill-color: transparent;
+                    }
+                }
+
+                &__event-receptor {
+                    position: absolute;
+                    height: 22px;
+                    width: 22px;
+                    right: 0;
+                    cursor: pointer;
+                }
+
+                &__fav {
+                    position: relative;
+                    grid-row: 1/3;
+                    grid-column: 2;
+                    font-size: 22px;
+                    text-align: right;
+                    padding-top: 4px;
                 }
             }
         }
@@ -302,6 +425,76 @@ $invisible: #ffffff00;
         font-weight: 500;
 
         &__link {
+            &__icon {
+                width: 22px;
+                font-size: 13px;
+            }
         }
     }
 }
+
+@media (width > 800px) {
+
+    .section {
+        &__container{
+        }
+    }
+
+    .info {
+        &__list {
+            flex-direction: row;
+            gap: 40px;
+            width: 100%;
+
+            &__elem {
+                width: 100%;
+
+                &__text {
+                    padding: 24px 0;
+                }
+            }
+        }
+    }
+
+    .restaurants {
+        &__cards {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            gap: 5dvw 10dvw;
+        }
+    }
+    .contact {
+        flex-direction: row-reverse;
+        align-items: flex-end;
+        justify-content: flex-start;
+        height: 114px;
+
+        &__logo {
+            height: 27px;
+            padding: 0 36px;
+        }
+
+        &__links {
+            flex-direction: row;
+            gap: 16px;
+
+            &__link {
+                &--more-padding {
+                    padding-right: 16px;
+                }
+            }
+        }
+    }
+}
+
+@media (width > 1280px) {
+    .section {
+        &__container {
+            width: 70%;
+        }
+    }
+}
+
+

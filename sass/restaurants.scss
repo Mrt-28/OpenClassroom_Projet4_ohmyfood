@@ -80,7 +80,7 @@ $invisible: #ffffff00;
 }
 
 .restaurant-img {
-    height: 275px;
+    width:100%;
 }
 
 .restaurant-menu {
@@ -93,12 +93,119 @@ $invisible: #ffffff00;
     @include flexgrp(40px,column,unset,unset,unset);
 
     &__title {
+        position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        font-family: "Shrikhand", serif;
         font-size: 28px;
-        font-weight: 400;
         font-style: italic;
+        cursor: default;
+
+        &__event-checkbox {
+            position: absolute;
+            height: 0;
+            width: 0;
+            visibility: hidden;
+        }
+
+        &__event-checkbox + .restaurant-menu__title__fav {
+            animation: 300ms ease-out 0s 1 both checked-fav;
+            -webkit-animation: 300ms ease-out 0s 1 both checked-fav;
+        }
+
+        &__event-checkbox:checked + .restaurant-menu__title__fav {
+            animation: 300ms ease-out 0s 1 both unchecked-fav;
+            -webkit-animation: 300ms ease-out 0s 1 both unchecked-fav;
+        }
+
+        @-webkit-keyframes checked-fav {
+            0% {
+                font-weight: 700;
+                background: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                -moz-background-clip: text;
+                -moz-text-fill-color: transparent;
+            }
+
+            100% {
+                font-weight: 300;
+                background: unset;
+                -webkit-background-clip: unset;
+                -webkit-text-fill-color: unset;
+                -moz-background-clip: unset;
+                -moz-text-fill-color: unset;
+            }
+        }
+
+        @-webkit-keyframes unchecked-fav {
+            0% {
+                font-weight: 300;
+                background: unset;
+                -webkit-background-clip: unset;
+                -webkit-text-fill-color: unset;
+                -moz-background-clip: unset;
+                -moz-text-fill-color: unset;
+            }
+
+            100% {
+                font-weight: 700;
+                background: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                -moz-background-clip: text;
+                -moz-text-fill-color: transparent;
+            }
+        }
+
+        @keyframes checked-fav {
+            0% {
+                font-weight: 700;
+                background: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                -moz-background-clip: text;
+                -moz-text-fill-color: transparent;
+            }
+
+            100% {
+                font-weight: 300;
+                background: unset;
+                -webkit-background-clip: unset;
+                -webkit-text-fill-color: unset;
+                -moz-background-clip: unset;
+                -moz-text-fill-color: unset;
+            }
+        }
+
+        @keyframes unchecked-fav {
+            0% {
+                font-weight: 300;
+                background: unset;
+                -webkit-background-clip: unset;
+                -webkit-text-fill-color: unset;
+                -moz-background-clip: unset;
+                -moz-text-fill-color: unset;
+            }
+
+            100% {
+                font-weight: 700;
+                background: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                -moz-background-clip: text;
+                -moz-text-fill-color: transparent;
+            }
+        }
+
+        &__event-receptor {
+            position: absolute;
+            height: 22px;
+            width: 22px;
+            right: 0;
+            cursor: pointer;
+        }
 
         &__fav {
             font-size: 22px;
@@ -122,25 +229,133 @@ $invisible: #ffffff00;
                 margin-bottom: 0;
                 margin-left: 0;
                 width: 40px;
-                border: 3px solid #99E2D0;
-                margin: 0;
+                border: 0;
+                height: 3px;
+                background-color: $light_green;
             }
         }
 
         &__content {
             background-color: white;
-            box-shadow: 0px 4.01px 15.04px 0px #0000001A;
+            box-shadow: 0px 4.01px 15.04px 0px rgba(0, 0, 0, 0.1019607843);
             border-radius: 15px;
-            padding: 15px;
             display: grid;
-            grid-template-columns: 1.75fr 0.25fr;
+            grid-template-columns: calc(80% - 5px) calc(20% - 5px) 59px;
             grid-template-rows: 1fr 1fr;
             grid-gap: 5px;
+            font-size: 15px;
+            overflow: hidden;
+            position: relative;
+
+            &__title {
+                font-size: 18px;
+                font-weight: 500;
+                padding: 15px 0 0 15px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
 
             &__text {
                 grid-column: 1;
+                font-weight: 300;
+                padding: 0 0 15px 15px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            &__price {
+                font-weight: 700;
+                grid-row: 1/3;
+                grid-column: 2;
+                align-content: flex-end;
+                padding-bottom: 15px;
+                text-align: center;
+            }
+
+            &__checkblock {
+                height: 100%;
+                width: 100%;
+                text-align: center;
+                grid-column: 3;
+                grid-row: 1/3;
+                align-content: center;
+                background: $light_green;
+
+                &__icon {
+                    color: $light_green;
+                    border-radius: 50%;
+                    background-color: white;
+                    font-size: 12px;
+                    padding: 4px;
+                }
+            }
+
+            &__event-checkbox {
+                position: absolute;
+                height: 0;
+                width: 0;
+                visibility: hidden;
+            }
+
+            &__event-checkbox + .restaurant-menu__block__content {
+                animation: 300ms ease-out 0s 1 both checked;
+                -webkit-animation: 300ms ease-out 0s 1 both checked;
+            }
+
+            &__event-checkbox:checked + .restaurant-menu__block__content {
+                animation: 300ms ease-out 0s 1 both unchecked;
+                -webkit-animation: 300ms ease-out 0s 1 both unchecked;
+            }
+
+            &__event-receptor {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                cursor: pointer;
             }
         }
+    }
+}
+
+@-webkit-keyframes checked {
+    0% {
+        grid-template-columns: calc(80% - 64px) calc(20% - 5px) 59px;
+    }
+
+    100% {
+        grid-template-columns: calc(80% - 5px) calc(20% - 5px) 59px;
+    }
+}
+
+@-webkit-keyframes unchecked {
+    0% {
+        grid-template-columns: calc(80% - 5px) calc(20% - 5px) 59px;
+    }
+
+    100% {
+        grid-template-columns: calc(80% - 64px) calc(20% - 5px) 59px;        
+    }
+}
+
+@keyframes checked {
+    0% {       
+        grid-template-columns: calc(80% - 64px) calc(20% - 5px) 59px;
+    }
+
+    100% {
+        grid-template-columns: calc(80% - 5px) calc(20% - 5px) 59px;
+    }
+}
+
+@keyframes unchecked {
+    0% {
+        grid-template-columns: calc(80% - 5px) calc(20% - 5px) 59px;
+    }
+
+    100% {
+        grid-template-columns: calc(80% - 64px) calc(20% - 5px) 59px;
     }
 }
 
@@ -160,6 +375,10 @@ $invisible: #ffffff00;
         font-weight: 500;
 
         &__link {
+            &__icon {
+                width: 22px;
+                font-size: 13px;
+            }
         }
     }
 }
