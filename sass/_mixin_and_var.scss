@@ -1,0 +1,27 @@
+$color_2: #003A68;
+$color_3: #89C8FA;
+
+$dark_green: #008766;
+$light_green: #99E2D0;
+
+$purple: #9356DC;
+$pink: #FF79DA;
+
+$bckg_0: #F6F6F6;
+$bckg_1: white;
+$bckg_2: #EAEAEA;
+$bckg_3: #353535;
+
+$invisible: #ffffff00;
+
+@mixin flexgrp ($gap: unset, $direction: unset, $items: center, $justify: center,$wrap: unset, $content: center) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $items;
+    justify-content: $justify;
+    flex-wrap: $wrap;
+    align-content: $content;
+    gap: $gap;
+}
+
+@warn "mixin_and_var";

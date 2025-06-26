@@ -1,0 +1,104 @@
+@use "mixin_and_var" as *;
+
+:root {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.page {
+    background-color: $bckg_0;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 24px;
+    padding: 0 0 20px 0;
+}
+
+.loading-block {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: white;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: 3s ease-out 0s 1 both loading-block_display;
+    -webkit-animation: 3s ease-out 0s 1 both loading-block_display;
+
+    &__container {
+        width: 100%;
+        position: relative;
+
+        &__logo {
+            font-family: "Shrikhand", sans-serif;
+            font-size: 3em;
+            background: linear-gradient(193.33deg, $purple -11.44%, $pink 123.93%);
+            width: 100%;
+            text-align: center;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -moz-background-clip: text;
+            -moz-text-fill-color: transparent;
+        }
+
+        &__mask {
+            background: linear-gradient(90deg, $invisible, $bckg_1 10%);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 20%;
+            animation: 3s ease-out 0s 1 both loading_textgradient;
+            -webkit-animation: 3s ease-out 0s 1 both loading_textgradient;
+        }
+    }
+}
+
+@-webkit-keyframes loading-block_display {
+    50% {
+        opacity: 100%;
+    }
+
+    100% {
+        opacity: 0%;
+        display: none;
+    }
+}
+
+@keyframes loading-block_display {
+    50% {
+        opacity: 100%;
+    }
+
+    100% {
+        opacity: 0%;
+        display: none;
+    }
+}
+
+@-webkit-keyframes loading_textgradient {
+    0% {
+        left: 20%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes loading_textgradient {
+    0% {
+        left: 20%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}

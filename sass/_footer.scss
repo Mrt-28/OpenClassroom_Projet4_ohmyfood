@@ -1,0 +1,50 @@
+@use "mixin_and_var" as *;
+
+.contact {
+    @include flexgrp(16px,column,unset);
+    background-color: $bckg_3;
+    padding: 22px 25px;
+
+    &__logo {
+        filter: brightness(100);
+        width: 100px;
+    }
+
+    &__links {
+        @include flexgrp(7px,column,unset);
+        color: white;
+        font-weight: 500;
+
+        &__link {
+            &__icon {
+                width: 22px;
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+@media (width > 800px) {
+    .contact {
+        flex-direction: row-reverse;
+        align-items: flex-end;
+        justify-content: flex-start;
+        height: 114px;
+
+        &__logo {
+            height: 27px;
+            padding: 0 36px;
+        }
+
+        &__links {
+            flex-direction: row;
+            gap: 16px;
+
+            &__link {
+                &--more-padding {
+                    padding-right: 16px;
+                }
+            }
+        }
+    }
+}

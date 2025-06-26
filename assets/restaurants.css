@@ -3,6 +3,11 @@
   font-size: 16px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .page {
   background-color: #F6F6F6;
 }
@@ -10,9 +15,81 @@
 .title {
   font-weight: 700;
   font-size: 24px;
-  padding: 0 20px 20px;
+  padding: 0 0 20px 0;
 }
 
+.loading-block {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: white;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: 3s ease-out 0s 1 both loading-block_display;
+  -webkit-animation: 3s ease-out 0s 1 both loading-block_display;
+}
+.loading-block__container {
+  width: 100%;
+  position: relative;
+}
+.loading-block__container__logo {
+  font-family: "Shrikhand", sans-serif;
+  font-size: 3em;
+  background: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+  width: 100%;
+  text-align: center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+.loading-block__container__mask {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), white 10%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 20%;
+  animation: 3s ease-out 0s 1 both loading_textgradient;
+  -webkit-animation: 3s ease-out 0s 1 both loading_textgradient;
+}
+
+@-webkit-keyframes loading-block_display {
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+    display: none;
+  }
+}
+@keyframes loading-block_display {
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+    display: none;
+  }
+}
+@-webkit-keyframes loading_textgradient {
+  0% {
+    left: 20%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+@keyframes loading_textgradient {
+  0% {
+    left: 20%;
+  }
+  100% {
+    left: 100%;
+  }
+}
 .headband__top {
   display: flex;
   flex-direction: column;
@@ -21,14 +98,13 @@
   flex-wrap: unset;
   align-content: center;
   gap: unset;
-  height: 63px;
+  height: min(15dvw, 10dvh);
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1490196078);
 }
 .headband__top__return {
   position: absolute;
-  left: 17px;
-  top: 17px;
-  font-size: 16px;
+  left: 24px;
+  font-size: clamp(18px, 3dvw, 20px);
 }
 .headband__top__logo {
   width: 197px;
@@ -45,15 +121,72 @@
   background-color: #EAEAEA;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
 }
+.headband__search-location--inactive {
+  display: none;
+}
 .headband__search-location__text {
   border: 0;
   font-size: 16px;
   font-weight: 500;
   background-color: rgba(255, 255, 255, 0);
+  outline: none;
+  field-sizing: content;
 }
 
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+  justify-content: center;
+  flex-wrap: unset;
+  align-content: center;
+  gap: 16px;
+  background-color: #353535;
+  padding: 22px 25px;
+}
+.contact__logo {
+  filter: brightness(100);
+  width: 100px;
+}
+.contact__links {
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+  justify-content: center;
+  flex-wrap: unset;
+  align-content: center;
+  gap: 7px;
+  color: white;
+  font-weight: 500;
+}
+.contact__links__link__icon {
+  width: 22px;
+  font-size: 13px;
+}
+
+@media (width > 800px) {
+  .contact {
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    justify-content: flex-start;
+    height: 114px;
+  }
+  .contact__logo {
+    height: 27px;
+    padding: 0 36px;
+  }
+  .contact__links {
+    flex-direction: row;
+    gap: 16px;
+  }
+  .contact__links__link--more-padding {
+    padding-right: 16px;
+  }
+}
 .restaurant-img {
   width: 100%;
+  object-fit: cover;
+  max-height: 380px;
 }
 
 .restaurant-menu {
@@ -61,7 +194,7 @@
   background-color: #F6F6F6;
   top: -48px;
   position: relative;
-  padding: 40px 17px;
+  padding: 40px 16px;
   margin-bottom: -48px;
   display: flex;
   flex-direction: column;
@@ -70,6 +203,7 @@
   flex-wrap: unset;
   align-content: center;
   gap: 40px;
+  min-height: 65dvh;
 }
 .restaurant-menu__title {
   position: relative;
@@ -177,6 +311,15 @@
 .restaurant-menu__title__fav {
   font-size: 22px;
 }
+.restaurant-menu__block:nth-of-type(2) {
+  animation-delay: 3s;
+}
+.restaurant-menu__block:nth-of-type(3) {
+  animation-delay: 3.2s;
+}
+.restaurant-menu__block:nth-of-type(4) {
+  animation-delay: 3.4s;
+}
 .restaurant-menu__block {
   display: flex;
   flex-direction: column;
@@ -185,6 +328,13 @@
   flex-wrap: unset;
   align-content: center;
   gap: 12px;
+  animation-name: mfadin;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  height: 0;
+  transform: translateY(20px);
 }
 .restaurant-menu__block__title {
   display: flex;
@@ -308,35 +458,53 @@
     grid-template-columns: calc(80% - 64px) calc(20% - 5px) 59px;
   }
 }
-.contact {
-  display: flex;
-  flex-direction: column;
-  align-items: unset;
-  justify-content: center;
-  flex-wrap: unset;
-  align-content: center;
-  gap: 16px;
-  background-color: #353535;
-  padding: 22px 25px;
+@keyframes mfadin {
+  0% {
+    opacity: 0;
+    height: 0;
+    transform: translateY(20px);
+  }
+  90% {
+    opacity: 0.3;
+    height: 220px;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    height: 100%;
+    transform: translateY(0px);
+  }
 }
-.contact__logo {
-  filter: brightness(100);
-  width: 100px;
+@-webkit-keyframes mfadin {
+  0% {
+    opacity: 0;
+    height: 0;
+    transform: translateY(20px);
+  }
+  90% {
+    opacity: 0.3;
+    height: 220px;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    height: 100%;
+    transform: translateY(0px);
+  }
 }
-.contact__links {
-  display: flex;
-  flex-direction: column;
-  align-items: unset;
-  justify-content: center;
-  flex-wrap: unset;
-  align-content: center;
-  gap: 7px;
-  color: white;
-  font-weight: 500;
-}
-.contact__links__link__icon {
-  width: 22px;
-  font-size: 13px;
+@media (width > 800px) {
+  .restaurant-menu {
+    max-width: 1050px;
+    align-items: center;
+    margin: auto;
+    margin-bottom: -48px;
+  }
+  .restaurant-menu__title {
+    gap: 26px;
+  }
+  .restaurant-menu__block {
+    width: 60%;
+  }
 }
 
 /*# sourceMappingURL=restaurants.css.map */

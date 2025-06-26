@@ -19,17 +19,25 @@
     <link rel="stylesheet" href="../assets/restaurants.css">
 </head>
 <body>
+
+    <div class="loading-block">
+        <div class="loading-block__container">
+            <p class="loading-block__container__logo"> ohmyfood </p>
+            <div class="loading-block__container__mask"></div>
+        </div>
+    </div>
+
     <header class="headband">
         <div class="headband__top">
-            <i class="headband__top__return headband__top__return--inactive fa-solid fa-arrow-left"></i>
-            <img class="headband__top__logo" alt="logo_ohmyfood" src="../assets/images/logo/ohmyfood@2x.svg">
+            <a class="headband__top__return" href="../index.html"><i class="fa-solid fa-arrow-left"></i></a>
+            <img class="headband__top__logo" alt="logo_ohmyfood" src="../assets/images/logo/ohmyfood@2x.svg" />
         </div>
-
-        <div class="headband__search-location">
+        <div class="headband__search-location headband__search-location--inactive">
             <i class="headband__search-location__location-icon fa-solid fa-location-dot"></i>
             <input class="headband__search-location__text" type="text" id="search-location" placeholder="Lieux" value="Paris, Belleville">
         </div>
     </header>
+
     <img class="restaurant-img" alt="image du restaurant a la française" src="../assets/images/restaurants/toa-heftiba-DQKerTsQwi0-unsplash.jpg">
     <section class="restaurant-menu">
 
@@ -151,13 +159,14 @@
             </div>
         </div>
     </section>
+
     <footer class="contact">
-        <img class="contact__logo" alt="contact_logo_ohmyfood" src="../assets/images/logo/ohmyfood@2x.svg">
+        <img class="contact__logo" src="../assets/images/logo/ohmyfood@2x.svg" alt="contact_logo_ohmyfood">
         <div class="contact__links">
             <a class="contact__links__link"><i class="contact__links__link__icon fa-solid fa-utensils"></i>Proposer un restaurant</a>
-            <a class="contact__links__link"><i class="contact__links__link__icon fa-solid fa-handshake-angle"></i>Devenir partenaire</a>
+            <a class="contact__links__link contact__links__link--more-padding"><i class="contact__links__link__icon fa-solid fa-handshake-angle"></i>Devenir partenaire</a>
             <a class="contact__links__link">Mention légales</a>
-            <a class="contact__links__link">Contact</a>
+            <a class="contact__links__link contact__links__link--more-padding" href="mailto:contact@ohmyfood.com">Contact</a>
         </div>
     </footer>
 </body>
